@@ -30,9 +30,9 @@
       <ul>
 
         <form>
-          <h3>Project Name:</h3><br>
-          <input type="text" name="firstname"> 
-          <h3>Roles Needed:</h3> <br>
+          <h3>Project Name:</h3>
+          <input type="text" name="project"> 
+          <h3>Roles Needed:</h3> 
 
           <form action="/action_page.php">
           <input type="checkbox" name="role1" value="Consultant">Consultant<br>
@@ -44,8 +44,8 @@
           <input type="checkbox" name="role6" value="Principal">Principal<br>
           
 
-          <h3>Skills Needed:</h3> <br>
-          <br>
+          <h3>Skills Needed:</h3> 
+          
           <form action="/action_page.php">
           <input type="checkbox" name="skill1" value="Management">Management<br>
           <input type="checkbox" name="skill2" value="C++">C++<br>
@@ -71,6 +71,41 @@
     <div class="col-md-6">
       <h1><span class="glyphicon glyphicon-user"></span> Add an Employee</h1>
       <ul>
+        <form>
+
+          <h3> Full Name:</h3>
+          <input type="text" name="fullname"> 
+
+          <h3> Role:</h3>
+          <input type="text" name="role"> 
+
+          <h3>Focus Area:</h3> 
+          <form action="/action_page.php">
+          <input type="checkbox" name="focus1" value="Web Front End">Web Front End<br>
+          <input type="checkbox" name="focus2" value="Web Back End">Web Back End<br>
+          <input type="checkbox" name="focus3" value="Platforms">Platforms<br>
+          <input type="checkbox" name="focus4" value="Mobile">Mobile<br>
+          <input type="checkbox" name="focus5" value="Project Management">Project Management<br>
+          <input type="checkbox" name="focus6" value="Due Diligence">Due Diligence<br>
+          
+
+          <h3>Skills:</h3> 
+          <form action="/action_page.php">
+          <input type="checkbox" name="skill1" value="Management">Management<br>
+          <input type="checkbox" name="skill2" value="C++">C++<br>
+          <input type="checkbox" name="skill3" value="Java">Java<br>
+          <input type="checkbox" name="skill4" value="HTML">HTML<br>
+          <input type="checkbox" name="skill5" value="C#">C#<br>
+          <input type="checkbox" name="skill6" value="Python">Python<br>
+          <input type="checkbox" name="skill6" value="JavaScript">JavaScript<br>
+          
+
+          <input type="submit">
+        </form> 
+
+
+
+
         <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
         <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
         <ul>
