@@ -16,9 +16,9 @@
     <p>project demo</p>
     <div class="">
       <h2>
-       <a class="btn btn-blue btn-theme btn-sm btn-min-block" href="#Insert">Add a Project</a>
-       <a class="btn btn-blue btn-theme btn-sm btn-min-block" href="#Update">Add an Employee</a>
-       <a class="btn btn-blue btn-theme btn-sm btn-min-block" href="#Remove">Projects That Need Staffing</a>
+       <a class="btn btn-blue btn-theme btn-sm btn-min-block" href="#Project">Add a Project</a>
+       <a class="btn btn-blue btn-theme btn-sm btn-min-block" href="#Employee">Add an Employee</a>
+       <a class="btn btn-blue btn-theme btn-sm btn-min-block" href="#Staffing">Projects That Need Staffing</a>
        </h2>
     </div>
 
@@ -30,8 +30,9 @@
     <div class="col-md-6">
       <h1><span class="glyphicon glyphicon-plus"></span> Add A Project</h1>
       <ul>
-      <section id="Update" class="home-section color-dark bg-white">
-        <form>
+      <section id="Project" class="home-section color-dark bg-white">
+      <div class="section-heading text-center">
+        <form name = "insert_project_form">
           <h3>Project Name:</h3>
           <input type="text" name="project"> 
 
@@ -72,6 +73,7 @@
             </button>
           </p>
         </form> 
+        </div>
         </section>
 
        <!-- <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/node-js-getting-started/blob/master/package.json">package.json</a>, creating a deployable slug.</li>
@@ -82,7 +84,9 @@
     <div class="col-md-6">
       <h1><span class="glyphicon glyphicon-user"></span> Add an Employee</h1>
       <ul>
-        <form name = "insert_proj_form">
+      <section id="Employee" class="home-section color-dark bg-white">
+      <div class="section-heading text-center">
+        <form name = "insert_employee_form">
 
           <h3> Full Name:</h3>
           <input type="text" name="fullname"> 
@@ -104,6 +108,8 @@
             </button>
           </p>
         </form>
+        </div>          
+        </section>
         <script type = "text/javaspcript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
                    <script type="application/javascript">
              
@@ -141,6 +147,13 @@
 <div class="active dropdown-toggle">
   <div class="container">
    <h1><span class="glyphicon glyphicon-th"></span> Projects that need staffing</h1>
+   <section id="Staffing" class="home-section color-dark bg-white">
+   <div class="section-heading text-center">
+     <form name = "insert_project_form">
+
+     </form>
+    </div> 
+   </section>
 
   </div>
 
