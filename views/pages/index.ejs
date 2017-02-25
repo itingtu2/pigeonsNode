@@ -42,11 +42,18 @@
           <h3>Client Name:</h3>
           <input type="text" name="client"> 
 
+          <h3>Skill Needed:</h3>  
+          <input type="text" name="skill"> 
+
           <h3>Focus Area:</h3>
           <input type="text" name="focus"> 
 
           <h3>Role Needed:</h3> 
           <input type="text" name="role"> 
+          <h3>Deadline:</h3> 
+          <input type="text" name="deadline"> 
+          <h3>Duration:</h3> 
+          <input type="text" name="duration"> 
 
          <!-- <form action="/action_page.php">
           <input type="checkbox" name="role1" value="Consultant">Consultant<br>
@@ -58,8 +65,7 @@
           <input type="checkbox" name="role6" value="Principal">Principal<br>
           -->
 
-          <h3>Skill Needed:</h3>  
-          <input type="text" name="skill"> 
+
           <!--
           <form action="/action_page.php">
           <input type="checkbox" name="skill1" value="Management">Management<br>
@@ -78,6 +84,34 @@
         </form> 
         </div>
         </section>
+        <script type = "text/javaspcript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+                   <script type="application/javascript">
+             
+                        document.getElementById("submit_project_form").addEventListener("click", submit)
+                       function submit()
+                       {
+                           var form = document.forms['insert_project_form']
+                           var inputs=form.getElementsByTagName('input')
+                           var data = {}
+                           for(var i = 0; i<inputs.length; i++)
+                           {
+                               var input = inputs[i]
+                               data[input.name] = input.value
+                           }
+                            $.ajax({
+                               type:'POST',
+                               data: JSON.stringify(data),
+                               url: '/insertProj',
+                               dataType: 'json',
+                               contentType: 'application/json; charset=UTF-8',
+                               success:success(data)
+                            })
+                       }
+                       function success(data) {
+                           console.log('Success: ', data)
+                       }
+             
+                    </script>
 
        <!-- <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/node-js-getting-started/blob/master/package.json">package.json</a>, creating a deployable slug.</li>
         <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
@@ -101,11 +135,11 @@
           <input type="text" name="role"> 
 
           <h3>Focus Area:</h3> 
-          <input type="text" name="role"> 
+          <input type="text" name="focus"> 
           
 
           <h3>Skills:</h3> 
-          <input type="text" name="role"> 
+          <input type="text" name="skills"> 
           
 
           <p>
@@ -119,10 +153,10 @@
         <script type = "text/javaspcript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
                    <script type="application/javascript">
              
-                        document.getElementById("submit_proj_form").addEventListener("click", submit)
+                        document.getElementById("submit_employee_form").addEventListener("click", submit)
                        function submit()
                        {
-                           var form = document.forms['insert_proj_form']
+                           var form = document.forms['insert_employee_form']
                            var inputs=form.getElementsByTagName('input')
                            var data = {}
                            for(var i = 0; i<inputs.length; i++)
@@ -133,7 +167,7 @@
                             $.ajax({
                                type:'POST',
                                data: JSON.stringify(data),
-                               url: '/insertProj',
+                               url: '/insertEmployee',
                                dataType: 'json',
                                contentType: 'application/json; charset=UTF-8',
                                success:success(data)
