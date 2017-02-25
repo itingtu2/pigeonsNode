@@ -85,9 +85,7 @@ app.post('/finishedProj', function(req,res){
 	var body = req.body
 	console.log("Body: ", body)
 
-	var stmt = "SELECT project.project FROM project INNER JOIN employee
-ON project.project = employee.project
-WHERE project.deadline < current_date AND employee.status = 'new'"
+	var stmt = "SELECT project.project FROM project INNER JOIN employee ON project.project = employee.project WHERE project.deadline < current_date AND employee.status = 'new'"
 	var inserts = []
 	var stmt = mysql.format(stmt, inserts)
 	conn.query(stmt, function(err, result) {
