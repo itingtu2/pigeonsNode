@@ -10,9 +10,6 @@
 
 <div class="jumbotron text-center">
   <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/en/5/52/West_Monroe_Partners_Logo.jpg">
-    </a>
     <h1>Welcome to The Pigeonholes</h1>
     <p>project demo</p>
     <!--<a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-nodejs"><span class="glyphicon glyphicon-flash"></span> Getting Started with Node</a> -->
@@ -20,9 +17,6 @@
   </div>
 </div>
 <div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="hello.h" class="alert-link">beep beep</a> tutorial.
-  </div>
   <hr>
   <div class="row">
     <div class="col-md-6">
@@ -32,9 +26,33 @@
         <form>
           <h3>Project Name:</h3>
           <input type="text" name="project"> 
-          <h3>Roles Needed:</h3> 
 
-          <form action="/action_page.php">
+          <h3>Client Name:</h3>
+          <input type="text" name="project"> 
+
+          <h3>Focus Area:</h3>
+          <input type="text" name="focus"> 
+            <datalist id="focus areas">
+              <option value="Web Front End">
+              <option value="Web Back End">
+              <option value="Platforms">
+              <option value="Mobile">
+              <option value="Project Management">
+              <option value="Due Diligence">
+            </datalist>
+
+          <h3>Role Needed:</h3> 
+          <input type="text" name="role"> 
+            <datalist id="roles">
+              <option value="Consultant">
+              <option value="Experienced Consultant">
+              <option value="Manager">
+              <option value="Architect">
+              <option value="Director">
+              <option value="Principal">
+            </datalist>
+
+         <!-- <form action="/action_page.php">
           <input type="checkbox" name="role1" value="Consultant">Consultant<br>
           <input type="checkbox" name="role2" value="Experienced Consultant">Experienced Consultant<br>
           <input type="checkbox" name="role3" value="Senior Consultant">Senior Consultant<br>
@@ -42,11 +60,21 @@
           <input type="checkbox" name="role5" value="Architect">Architect<br>
           <input type="checkbox" name="role6" value="Director">Director<br>
           <input type="checkbox" name="role6" value="Principal">Principal<br>
-          
+          -->
 
-          <h3>Skills Needed:</h3> 
+          <h3>Skill Needed:</h3>  
+          <input type="text" name="role"> 
+            <datalist id="roles">
+              <option value="Management">
+              <option value="C++">
+              <option value="Java">
+              <option value="HTML">
+              <option value="C#">
+              <option value="Python">
+              <option value="JavaScript">
+            </datalist>
           
-          <form action="/action_page.php">
+          <!--<form action="/action_page.php">
           <input type="checkbox" name="skill1" value="Management">Management<br>
           <input type="checkbox" name="skill2" value="C++">C++<br>
           <input type="checkbox" name="skill3" value="Java">Java<br>
@@ -54,7 +82,7 @@
           <input type="checkbox" name="skill5" value="C#">C#<br>
           <input type="checkbox" name="skill6" value="Python">Python<br>
           <input type="checkbox" name="skill6" value="JavaScript">JavaScript<br>
-          
+          -->
 
           <input type="submit">
         </form> 
@@ -67,7 +95,7 @@
     <div class="col-md-6">
       <h1><span class="glyphicon glyphicon-user"></span> Add an Employee</h1>
       <ul>
-        <form>
+        <form name = "insert_proj_form">
 
           <h3> Full Name:</h3>
           <input type="text" name="fullname"> 
@@ -76,13 +104,15 @@
           <input type="text" name="role"> 
 
           <h3>Focus Area:</h3> 
-          <form action="/action_page.php">
-          <input type="checkbox" name="focus1" value="Web Front End">Web Front End<br>
-          <input type="checkbox" name="focus2" value="Web Back End">Web Back End<br>
-          <input type="checkbox" name="focus3" value="Platforms">Platforms<br>
-          <input type="checkbox" name="focus4" value="Mobile">Mobile<br>
-          <input type="checkbox" name="focus5" value="Project Management">Project Management<br>
-          <input type="checkbox" name="focus6" value="Due Diligence">Due Diligence<br>
+          <input type="text" name="focus"> 
+            <datalist id="focus areas">
+              <option value="Web Front End">
+              <option value="Web Back End">
+              <option value="Platforms">
+              <option value="Mobile">
+              <option value="Project Management">
+              <option value="Due Diligence">
+            </datalist>
           
 
           <h3>Skills:</h3> 
@@ -96,14 +126,41 @@
           <input type="checkbox" name="skill6" value="JavaScript">JavaScript<br>
           
 
-          <input type="submit">
+          <button type="button" id = "submit_proj_form">
+          Submit
+          </button>
         </form>
+        <script type = "text/javaspcript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+                   <script type="application/javascript">
+             
+                        document.getElementById("submit_proj_form").addEventListener("click", submit)
+                       function submit()
+                       {
+                           var form = document.forms['insert_proj_form']
+                           var inputs=form.getElementsByTagName('input')
+                           var data = {}
+                           for(var i = 0; i<inputs.length; i++)
+                           {
+                               var input = inputs[i]
+                               data[input.name] = input.value
+                           }
+                            $.ajax({
+                               type:'POST',
+                               data: JSON.stringify(data),
+                               url: '/insertProj',
+                               dataType: 'json',
+                               contentType: 'application/json; charset=UTF-8',
+                               success:success(data)
+                            })
+                       }
+                       function success(data) {
+                           console.log('Success: ', data)
+                       }
+             
+                    </script>
       </ul>
     </div>
   </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
-    Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
-  </div>
 </div>
 
 <div class="jumbotron text-center">
@@ -111,7 +168,7 @@
     <a href="/" class="lang-logo">
       <img src="https://upload.wikimedia.org/wikipedia/en/5/52/West_Monroe_Partners_Logo.jpg">
     </a>
-    <h1>Welcome to The Pigeonholes</h1>
+    <h1>Projects that need staffing</h1>
     <p>project demo</p>
     <!--<a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-nodejs"><span class="glyphicon glyphicon-flash"></span> Getting Started with Node</a> -->
     <!-- <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/node-js-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a> -->
