@@ -120,7 +120,7 @@
     </div>
 
     <!-- ##################################################################### -->
-    <div class>
+ <!--   <div class>
     <section id="Employee" class="home-section color-dark bg-white">
       <h1><span class="glyphicon glyphicon-user"></span> Add an Employee</h1>
       <ul>
@@ -180,9 +180,9 @@
                     </script>
       </ul>
     </div>
-  </div> <!-- row -->
+  </div> 
 </div>
-<!-- ##################################################################### -->
+#####################################################################
 
 <div class="active dropdown-toggle">
   <div class="container">
@@ -199,23 +199,67 @@
   </div>
 
 </div>
-<!-- ##################################################################### -->
 
 <div class="active dropdown-toggle">
   <div class="container">
   <section id="Satus" class="home-section color-dark bg-white">
    <h1><span class="glyphicon glyphicon-check"></span> Set Project Status</h1>
    <div class="section-heading text-center">
-     <form name = "insert_project_form">
-
-     </form>
+     <form name = “ProjectStatusRefresh”>
+            <button type="button" id = "ProjectStatusList">
+            Refresh
+            </button>
+      </form>                   
     </div> 
    </section>
 
+<table id = “SetProjectStatus” style="width:100%">
+    <thead>
+        <tr>
+            <th>Project Name</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+ <script type = "text/javaspcript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="application/javascript">
+    document.getElementById(“ProjectStatusList”).addEventListener("click", submit)
+    function submit()
+    {
+        $('SetProjectStatus tb').remove();
+        var form = document.forms['ProjectStatusRefresh']
+
+        var request= $.ajax({
+            type:'POST',
+            data: JSON.stringify(data),
+            url: ‘/finishedProj’,
+            dataType: 'json',
+            contentType: 'application/json; charset=UTF-8',
+            success:success(data)
+         });
+        
+        request.done(function(dat){
+            $('#SetProjectStatus tbody').remove();
+            for (var i =0; i<dat.rows.length; i++)
+            {
+                //var object = JSON.parse(dat[i]);
+                var row = $("<tr />")
+                $(“#SetProjectStatus”).append(row);
+                //row.append($("<td>" + dat[i] + "</td>"));
+                row.append($("<td>" + dat.rows[i].title + "</td>"+ "<td>" + dat.rows[i].link + "</td>"+"<td>" + dat.rows[i].topic + "</td>"));
+            }
+        });
+    }
+    function success(data) {
+        console.log('Success Search: ', data)
+    }
+</script>
   </div>
 
 </div>
-
+-->
 
 
 </body>

@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var mysql = require('mysql');
+//var mysql = require('mysql');
 var url = require('url');
 
 app.set('port', (process.env.PORT || 5000));
@@ -25,7 +25,26 @@ var pg = require('pg');
 pg.default.ssl = true;
 var str = "postgres://ywnodfgeebqfxe:ad885309fb8aac545475b7de44d1b1bb2e8421a7aac7ebae3c18316b8ab90111@ec2-23-21-204-166.compute-1.amazonaws.com:5432/d84j9nfcrovrde"
 var connectionString = "pg://ywnodfgeebqfxe:ad885309fb8aac545475b7de44d1b1bb2e8421a7aac7ebae3c18316b8ab90111@ec2-23-21-204-166.compute-1.amazonaws.com/d84j9nfcrovrde"
-pg.connect(connectionString, function(err,client,done){
+const client = new pg.Client(connectionString);
+client.connect();
+router.post('insertProj', (req, res, next) =>{
+	const results = [];
+	const data = {text: req.body.text, complete:false};
+	pg.connect(connectionString, (err,client,done)=>{
+		if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+    client.query('INSERT INTO project(project, client, skills, focus_area, role, deadline, duration) values($1, $2, $3,$4,$5,$6,$7)',
+    [data.text, data.complete]);
+    query.on('end', () => {
+      done();
+      return res.json(results);
+    });
+
+})
+/*pg.connect(connectionString, function(err,client,done){
 	if(err){
 		console.log(err);
 	}
@@ -102,7 +121,7 @@ app.post('/finishedProj', function(req,res){
 
 	})
 
-})
+})*/
 
 
 
