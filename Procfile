@@ -1,1 +1,1 @@
-web: node bootstrap/creative.js
+web: node bootstrap/js/creative.js
