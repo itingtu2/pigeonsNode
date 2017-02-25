@@ -31,7 +31,7 @@
           <input type="text" name="project"> 
 
           <h3>Focus Area:</h3>
-          <input list="text" name="focus"> 
+          <input type="text" name="focus"> 
             <datalist id="focus areas">
               <option value="Web Front End">
               <option value="Web Back End">
@@ -42,7 +42,7 @@
             </datalist>
 
           <h3>Role Needed:</h3> 
-          <input list="text" name="role"> 
+          <input type="text" name="role"> 
             <datalist id="roles">
               <option value="Consultant">
               <option value="Experienced Consultant">
@@ -63,7 +63,7 @@
           -->
 
           <h3>Skill Needed:</h3>  
-          <input list="text" name="role"> 
+          <input type="text" name="role"> 
             <datalist id="roles">
               <option value="Management">
               <option value="C++">
@@ -82,7 +82,7 @@
           <input type="checkbox" name="skill5" value="C#">C#<br>
           <input type="checkbox" name="skill6" value="Python">Python<br>
           <input type="checkbox" name="skill6" value="JavaScript">JavaScript<br>
-          -->
+          
 
           <input type="submit">
         </form> 
@@ -104,15 +104,13 @@
           <input type="text" name="role"> 
 
           <h3>Focus Area:</h3> 
-          <input list="text" name="focus"> 
-            <datalist id="focus areas">
-              <option value="Web Front End">
-              <option value="Web Back End">
-              <option value="Platforms">
-              <option value="Mobile">
-              <option value="Project Management">
-              <option value="Due Diligence">
-            </datalist>
+          <form action="/action_page.php">
+          <input type="checkbox" name="focus1" value="Web Front End">Web Front End<br>
+          <input type="checkbox" name="focus2" value="Web Back End">Web Back End<br>
+          <input type="checkbox" name="focus3" value="Platforms">Platforms<br>
+          <input type="checkbox" name="focus4" value="Mobile">Mobile<br>
+          <input type="checkbox" name="focus5" value="Project Management">Project Management<br>
+          <input type="checkbox" name="focus6" value="Due Diligence">Due Diligence<br>
           
 
           <h3>Skills:</h3> 
