@@ -22,7 +22,7 @@ app.listen(app.get('port'), function() {
 
 var conn;
 var pg = require('pg');
-pg.default.ssl = true;
+//pg.default.ssl = true;
 var str = "postgres://ywnodfgeebqfxe:ad885309fb8aac545475b7de44d1b1bb2e8421a7aac7ebae3c18316b8ab90111@ec2-23-21-204-166.compute-1.amazonaws.com:5432/d84j9nfcrovrde"
 var connectionString = "pg://ywnodfgeebqfxe:ad885309fb8aac545475b7de44d1b1bb2e8421a7aac7ebae3c18316b8ab90111@ec2-23-21-204-166.compute-1.amazonaws.com/d84j9nfcrovrde"
 const client = new pg.Client(connectionString);
