@@ -5,7 +5,7 @@ var url = require('url');
 
 app.set('port', (process.env.PORT || 5000));
 
-app.use(bodyParser.json())
+//app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
@@ -32,18 +32,18 @@ router.post('insertProj', (req, res, next) =>{
 	const data = {text: req.body.text, complete:false};
 	pg.connect(connectionString, (err,client,done)=>{
 		if(err) {
-      done();
-      console.log(err);
-      return res.status(500).json({success: false, data: err});
-    }
-    client.query('INSERT INTO project(project, client, skills, focus_area, role, deadline, duration) values($1, $2, $3,$4,$5,$6,$7)',
-    [data.text, data.complete]);
-    query.on('end', () => {
-      done();
-      return res.json(results);
+      		done();
+      		console.log(err);
+      		return res.status(500).json({success: false, data: err});
+    	}
+    	client.query('INSERT INTO project(project, client, skills, focus_area, role, deadline, duration) values($1, $2, $3,$4,$5,$6,$7)', [data.text, data.complete]);
+    	query.on('end', () => {
+      	done();
+      	return res.json(results);
     });
 
-})
+	});
+});
 /*pg.connect(connectionString, function(err,client,done){
 	if(err){
 		console.log(err);
