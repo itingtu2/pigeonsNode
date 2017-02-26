@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+const router = express.Router();
 //var mysql = require('mysql');
 var url = require('url');
 
